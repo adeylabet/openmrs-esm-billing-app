@@ -1,5 +1,5 @@
 {
-  "name": "@openmrs/esm-billing-app",
+  "name": "@adeylab/esm-billing-app",
   "version": "1.3.1",
   "description": "O3 frontend module for handling billing concerns in healthcare settings",
   "browser": "dist/openmrs-esm-billing-app.js",
@@ -8,7 +8,7 @@
   "license": "MPL-2.0",
   "homepage": "https://github.com/openmrs/openmrs-esm-billing-app#readme",
   "scripts": {
-    "start": "openmrs develop",
+    "start": "openmrs develop --backend  https://emr.adeylab.com",
     "analyze": "rspack --mode=production --env.analyze=true",
     "build": "rspack --mode production",
     "debug": "npm run serve",

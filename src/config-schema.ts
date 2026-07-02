@@ -1,6 +1,12 @@
 import { Type, validators } from '@openmrs/esm-framework';
 
 export const configSchema = {
+  paymentServerUrl: {
+    _type: Type.String,
+    _default: 'https://payment.adeylab.com/',
+    _description:
+      'Base URL of the standalone Chapa payment integration server (the Express app), NOT the OpenMRS server itself.',
+  },
   logo: {
     src: {
       _type: Type.String,
@@ -18,7 +24,7 @@ export const configSchema = {
   country: {
     _type: Type.String,
     _description: 'The text that gets printed on the top right of the invoice, typically the name of the country',
-    _default: 'Kenya',
+    _default: 'Ethiopia',
   },
   patientCategory: {
     _type: Type.Object,
@@ -88,7 +94,7 @@ export const configSchema = {
   defaultCurrency: {
     _type: Type.String,
     _description: 'The default currency for the application. Specify the currency code (e.g., KES, UGX, GBP).',
-    _default: 'KES',
+    _default: 'ETB',
   },
   pageSize: {
     _type: Type.Number,
@@ -135,4 +141,8 @@ export interface BillingConfig {
   };
   defaultCurrency: string;
   pageSize: number;
+}
+
+export interface ChapaPaymentConfig {
+  paymentServerUrl: string;
 }

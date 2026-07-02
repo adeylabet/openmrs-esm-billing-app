@@ -12,6 +12,70 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@adeylab/esm-billing-app@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@adeylab/esm-billing-app@workspace:."
+  dependencies:
+    "@carbon/react": "npm:^1.83.0"
+    "@hookform/resolvers": "npm:^3.3.4"
+    "@openmrs/esm-framework": "npm:next"
+    "@playwright/test": "npm:^1.53.2"
+    "@testing-library/dom": "npm:^9.3.4"
+    "@testing-library/jest-dom": "npm:^6.3.0"
+    "@testing-library/react": "npm:14.3.1"
+    "@testing-library/user-event": "npm:^14.5.2"
+    "@types/lodash-es": "npm:^4.17.12"
+    "@types/react": "npm:^18.3.21"
+    "@types/react-dom": "npm:^18.3.0"
+    "@types/webpack-env": "npm:^1.18.4"
+    "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
+    "@typescript-eslint/parser": "npm:^8.0.0"
+    "@vitest/coverage-v8": "npm:^4.0.18"
+    classnames: "npm:^2.5.1"
+    concurrently: "npm:^8.2.2"
+    cross-env: "npm:^7.0.3"
+    d3-selection: "npm:^3.0.0"
+    dayjs: "npm:^1.11.10"
+    dotenv: "npm:^16.4.1"
+    eslint: "npm:^8.57.0"
+    eslint-plugin-import: "npm:^2.31.0"
+    eslint-plugin-jest-dom: "npm:^5.5.0"
+    eslint-plugin-playwright: "npm:^2.2.2"
+    eslint-plugin-react-hooks: "npm:^5.0.0"
+    eslint-plugin-testing-library: "npm:^7.13.1"
+    fuzzy: "npm:^0.1.3"
+    husky: "npm:^9.0.6"
+    i18next: "npm:^25.0.0"
+    i18next-parser: "npm:^9.3.0"
+    identity-obj-proxy: "npm:^3.0.0"
+    jsdom: "npm:^29.0.2"
+    lint-staged: "npm:^15.2.10"
+    lodash: "npm:^4.17.21"
+    lodash-es: "npm:^4.17.21"
+    openmrs: "npm:next"
+    prettier: "npm:^3.2.4"
+    react: "npm:^18.3.1"
+    react-dom: "npm:^18.3.1"
+    react-hook-form: "npm:^7.49.3"
+    react-i18next: "npm:^16.0.0"
+    react-router-dom: "npm:^6.21.3"
+    react-to-print: "npm:^3.1.1"
+    rxjs: "npm:^6.6.7"
+    swr: "npm:2.2.5"
+    turbo: "npm:^2.5.2"
+    typescript: "npm:^5.0.0"
+    vitest: "npm:^4.0.18"
+    zod: "npm:^3.22.4"
+  peerDependencies:
+    "@openmrs/esm-framework": 10.x
+    react: 18.x
+    react-dom: 18.x
+    react-i18next: 16.x
+    rxjs: 6.x
+    swr: 2.x
+  languageName: unknown
+  linkType: soft
+
 "@adobe/css-tools@npm:^4.3.2":
   version: 4.3.3
   resolution: "@adobe/css-tools@npm:4.3.3"
@@ -2091,70 +2155,6 @@ __metadata:
   checksum: 10/3121755709f95441481732ead4abe2de74897998e4535c92e05d35b7bbe5a264bdd46601d1c2445869100c12a4fa1884b71d50a053650a8dcbeeed2434ccaeef
   languageName: node
   linkType: hard
-
-"@openmrs/esm-billing-app@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@openmrs/esm-billing-app@workspace:."
-  dependencies:
-    "@carbon/react": "npm:^1.83.0"
-    "@hookform/resolvers": "npm:^3.3.4"
-    "@openmrs/esm-framework": "npm:next"
-    "@playwright/test": "npm:^1.53.2"
-    "@testing-library/dom": "npm:^9.3.4"
-    "@testing-library/jest-dom": "npm:^6.3.0"
-    "@testing-library/react": "npm:14.3.1"
-    "@testing-library/user-event": "npm:^14.5.2"
-    "@types/lodash-es": "npm:^4.17.12"
-    "@types/react": "npm:^18.3.21"
-    "@types/react-dom": "npm:^18.3.0"
-    "@types/webpack-env": "npm:^1.18.4"
-    "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
-    "@typescript-eslint/parser": "npm:^8.0.0"
-    "@vitest/coverage-v8": "npm:^4.0.18"
-    classnames: "npm:^2.5.1"
-    concurrently: "npm:^8.2.2"
-    cross-env: "npm:^7.0.3"
-    d3-selection: "npm:^3.0.0"
-    dayjs: "npm:^1.11.10"
-    dotenv: "npm:^16.4.1"
-    eslint: "npm:^8.57.0"
-    eslint-plugin-import: "npm:^2.31.0"
-    eslint-plugin-jest-dom: "npm:^5.5.0"
-    eslint-plugin-playwright: "npm:^2.2.2"
-    eslint-plugin-react-hooks: "npm:^5.0.0"
-    eslint-plugin-testing-library: "npm:^7.13.1"
-    fuzzy: "npm:^0.1.3"
-    husky: "npm:^9.0.6"
-    i18next: "npm:^25.0.0"
-    i18next-parser: "npm:^9.3.0"
-    identity-obj-proxy: "npm:^3.0.0"
-    jsdom: "npm:^29.0.2"
-    lint-staged: "npm:^15.2.10"
-    lodash: "npm:^4.17.21"
-    lodash-es: "npm:^4.17.21"
-    openmrs: "npm:next"
-    prettier: "npm:^3.2.4"
-    react: "npm:^18.3.1"
-    react-dom: "npm:^18.3.1"
-    react-hook-form: "npm:^7.49.3"
-    react-i18next: "npm:^16.0.0"
-    react-router-dom: "npm:^6.21.3"
-    react-to-print: "npm:^3.1.1"
-    rxjs: "npm:^6.6.7"
-    swr: "npm:2.2.5"
-    turbo: "npm:^2.5.2"
-    typescript: "npm:^5.0.0"
-    vitest: "npm:^4.0.18"
-    zod: "npm:^3.22.4"
-  peerDependencies:
-    "@openmrs/esm-framework": 10.x
-    react: 18.x
-    react-dom: 18.x
-    react-i18next: 16.x
-    rxjs: 6.x
-    swr: 2.x
-  languageName: unknown
-  linkType: soft
 
 "@openmrs/esm-config@npm:10.0.1-pre.4917":
   version: 10.0.1-pre.4917

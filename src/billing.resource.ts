@@ -7,6 +7,7 @@ import {
   type SessionLocation,
   useOpenmrsFetchAll,
   useOpenmrsPagination,
+  useConfig,
 } from '@openmrs/esm-framework';
 import { apiBasePath } from './constants';
 import {
@@ -18,7 +19,9 @@ import {
   type UpdateBillPayload,
   BillStatus,
   type PatientPaymentStatus,
+  type ChapaPaymentRequestPayload,
 } from './types';
+import { ChapaPaymentConfig } from './config-schema';
 
 const parsePatientDisplay = (display: string | undefined): { identifier: string; name: string } => {
   if (!display) {
@@ -169,6 +172,17 @@ export const processBillPayment = (payload: PaymentRequestPayload, billUuid: str
     headers: {
       'Content-Type': 'application/json',
     },
+  });
+};
+
+export const chapaPayment = async (payload: ChapaPaymentRequestPayload) => {
+  const url = `${payload.paymentServerUrl}/api/pay`;
+  return await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
   });
 };
 

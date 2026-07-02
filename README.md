@@ -80,7 +80,7 @@ You can customize billing behavior using OpenMRS frontend config overrides.
 
 ```json
 {
-  "@openmrs/esm-billing-app": {
+  "@adeylab/esm-billing-app": {
     "defaultCurrency": "UGX",
     "pageSize": 20,
     "patientCategory": {

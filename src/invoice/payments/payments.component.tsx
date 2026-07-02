@@ -4,16 +4,17 @@ import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CardHeader, navigate, showSnackbar, useConfig, useVisit } from '@openmrs/esm-framework';
+import { CardHeader, navigate, showSnackbar, useConfig, usePatient, useVisit } from '@openmrs/esm-framework';
 import { InvoiceBreakDown } from './invoice-breakdown/invoice-breakdown.component';
 import PaymentForm from './payment-form/payment-form.component';
 import PaymentHistory from './payment-history/payment-history.component';
 import { useSWRConfig } from 'swr';
-import { processBillPayment, patientPaymentStatusCacheKey } from '../../billing.resource';
+import { processBillPayment, patientPaymentStatusCacheKey, chapaPayment } from '../../billing.resource';
 import { updateBillVisitAttribute } from './payment.resource';
 import { convertToCurrency } from '../../helpers';
 import { BillStatus, RefundStatus, type MappedBill } from '../../types';
 import styles from './payments.scss';
+import { type ChapaPaymentConfig } from '../../config-schema';
 
 type PaymentProps = {
   bill: MappedBill;
@@ -28,6 +29,9 @@ export type PaymentFormValue = {
 };
 
 const Payments: React.FC<PaymentProps> = ({ bill, mutate, onFinalizeBill }) => {
+  const { patient, patientUuid } = usePatient();
+  const { paymentServerUrl } = useConfig<ChapaPaymentConfig>();
+
   const { t } = useTranslation();
   const { mutate: swrMutate } = useSWRConfig();
   const paymentSchema = z.object({
@@ -113,6 +117,52 @@ const Payments: React.FC<PaymentProps> = ({ bill, mutate, onFinalizeBill }) => {
     }
   };
 
+  const handleChapaPayment = async () => {
+    if (!formValues?.method || formValues.amount == null) {
+      return;
+    }
+
+    try {
+      const response = await chapaPayment({
+        amount: Number(formValues.amount),
+        patientName: patient?.name?.[0]?.text,
+        patientUuid: patientUuid!,
+        billUuid: bill.uuid,
+        paymentServerUrl,
+      });
+      // showSnackbar({
+      //   title: t('billPayment', 'Bill payment'),
+      //   subtitle: t('paymentProcessedSuccessfully', 'Payment initiated successfully'),
+      //   kind: 'success',
+      // });
+      // if (currentVisit) {
+      //   updateBillVisitAttribute(currentVisit);
+      // }
+      // methods.reset(defaultPaymentValues);
+      // mutate();
+      // swrMutate(patientPaymentStatusCacheKey(bill.patientUuid));
+
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        showSnackbar({
+          title: t('Error processing payment', 'Error processing payment'),
+          subtitle: t('unableTostartPayment.', 'Unable to start payment.'),
+          kind: 'error',
+        });
+      }
+
+      const { checkout_url } = await response.json();
+
+      window.location.href = checkout_url;
+    } catch (error) {
+      showSnackbar({
+        title: t('errorProcessingPayment', 'Error processing payment'),
+        kind: 'error',
+        subtitle: error?.message,
+      });
+    }
+  };
+
   return (
     <FormProvider {...methods}>
       <div className={styles.wrapper}>
@@ -172,7 +222,11 @@ const Payments: React.FC<PaymentProps> = ({ bill, mutate, onFinalizeBill }) => {
             </Button>
             {!isPending && (
               <Button
-                onClick={handleProcessPayment}
+                onClick={
+                  formValues?.method === 'fcc694b3-3d00-4768-9d44-bbe4063043ea'
+                    ? handleChapaPayment
+                    : handleProcessPayment
+                }
                 disabled={!formValues?.method || formValues.amount == null || !methods.formState.isValid}>
                 {t('processPayment', 'Process Payment')}
               </Button>

@@ -23,7 +23,7 @@ import PaymentStatusTag from './payment-status-tag/payment-status-tag.component'
 import { configSchema } from './config-schema';
 import { dashboardMeta } from './dashboard.meta';
 
-const moduleName = '@openmrs/esm-billing-app';
+const moduleName = '@adeylab/esm-billing-app';
 
 const options = {
   featureName: 'billing',

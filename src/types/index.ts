@@ -247,6 +247,13 @@ export type PaymentRequestPayload = {
   amountTendered: number;
   amount: number;
 };
+export type ChapaPaymentRequestPayload = {
+  billUuid: string;
+  patientUuid: string;
+  patientName: string;
+  amount: number;
+  paymentServerUrl: string;
+};
 
 export type CreateBillPayload = {
   cashPoint: string;
