@@ -22,7 +22,8 @@
     "test:watch": "cross-env TZ=UTC vitest watch",
     "coverage": "cross-env TZ=UTC vitest run --coverage --passWithNoTests",
     "typescript": "tsc",
-    "verify": "turbo lint && turbo typescript && turbo test --color --concurrency=5"
+    "verify": "turbo lint && turbo typescript && turbo test --color --concurrency=5",
+    "cipublish": "npm publish"
   },
   "browserslist": [
     "extends browserslist-config-openmrs"
